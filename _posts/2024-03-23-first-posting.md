@@ -6,11 +6,11 @@ tags: [practice, blog, jekyll]
 author_profile: false # 왼쪽에 author_profile
 search: true # 오른쪽 위에 검색 기능
 use_math: true # LaTeX 수식 문법
+sidebar:
+    nav: "counts" # 왼쪽 sidebar
 typora-root-url: ../
 # redirect_from:
 #   - /catgory1/first-posting # url redirection
-# sidebar:
-#     nav: "docs"
 ---
 
 ## 깃허브 블로그 연습용 포스팅입니다.
