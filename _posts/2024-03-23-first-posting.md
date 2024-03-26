@@ -23,3 +23,4 @@ typora-root-url: ../
 print("Hellow world\n")
 ```
 
+![image-20240325103730001](/images/2024-03-23-first-posting/image-20240325103730001.png)
