@@ -20,7 +20,13 @@ $my-font1: -apple-system, BlinkMacSystemFont, "Nanum Pen Script", "Roboto", "Seg
   "Helvetica Neue", "Lucida Grande", Arial, sans-serif !default;
 $my-font2: -apple-system, BlinkMacSystemFont, "Gamja Flower", "Roboto", "Segoe UI",
   "Helvetica Neue", "Lucida Grande", Arial, sans-serif !default;
-  
+$my-font3: -apple-system, BlinkMacSystemFont, "Poor Story", "Roboto", "Segoe UI",
+  "Helvetica Neue", "Lucida Grande", Arial, sans-serif !default;
+$my-font4: -apple-system, BlinkMacSystemFont, "Nanum Gothic Coding", "Roboto", "Segoe UI",
+  "Helvetica Neue", "Lucida Grande", Arial, sans-serif !default;
+$my-font5: -apple-system, BlinkMacSystemFont, "IBM Plex Sans KR", "Roboto", "Segoe UI",
+  "Helvetica Neue", "Lucida Grande", Arial, sans-serif !default;
+
 $monospace: Monaco, Consolas, "Lucida Console", monospace !default;
 
 /* sans serif typefaces */
@@ -35,7 +41,7 @@ $calisto: "Calisto MT", serif !default;
 $garamond: Garamond, serif !default;
 
 // modify here to change fonts
-$global-font-family: $sans-serif !default;
+$global-font-family: $my-font5 !default;
 $header-font-family: $sans-serif !default;
 $caption-font-family: $serif !default;
 

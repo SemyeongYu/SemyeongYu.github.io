@@ -95,6 +95,30 @@ fieldset {
   widows: 3;
 }
 
+
+/* highlight : yellow */
+.y_half_HL {background: linear-gradient(to top, #FCF3CF 40%, transparent 0%);}
+/* highlight : red */
+.r_half_HL {background: linear-gradient(to top, #FADBD8 40%, transparent 0%);}
+/* highlight : blue */
+.b_half_HL {background: linear-gradient(to top, #D6EAF8 40%, transparent 0%);}
+/* highlight : green */
+.g_half_HL {background: linear-gradient(to top, #D5F5E3 40%, transparent 0%);}
+/* highlight : purple */
+.p_half_HL {background: linear-gradient(to top, #E8DAEF 40%, transparent 0%);}
+
+/* highlight : yellow */
+.y_all_HL {background: linear-gradient(to top, #FCF3CF 100%, transparent 0%);}
+/* highlight : red */
+.r_all_HL {background: linear-gradient(to top, #FADBD8 100%, transparent 0%);}
+/* highlight : blue */
+.b_all_HL {background: linear-gradient(to top, #D6EAF8 100%, transparent 0%);}
+/* highlight : green */
+.g_all_HL {background: linear-gradient(to top, #D5F5E3 100%, transparent 0%);}
+/* highlight : purple */
+.p_all_HL {background: linear-gradient(to top, #E8DAEF 100%, transparent 0%);}
+
+
 /* abbreviations */
 
 abbr[title],
