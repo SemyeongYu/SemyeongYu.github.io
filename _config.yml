@@ -16,11 +16,11 @@ minimal_mistakes_skin    : "mint" # "default", "air", "aqua", "contrast", "dark"
 
 # Site Settings
 locale                   : "en-US" # "ko-KR"
-title                    : "Paper Review"
+title                    : "Semyeong Yu"
 title_separator          : "|"
 subtitle                 : "Do Your Best"
 name                     : "Semyeong Yu"
-description              : "Computer Vision\n\nVideo Image Computing"
+description              : "Computer Vision"
 url                      : "https://SemyeongYu.github.io"
 baseurl                  : # the subpath of your site, e.g. "/blog"
 repository               : # GitHub username/repo-name e.g. "mmistakes/minimal-mistakes"
@@ -106,7 +106,7 @@ analytics:
 author:
   name             : "Semyeong Yu"
   avatar           : "/assets/images/NileRiver.jpg"
-  bio              : "Computer Vision\n\nVideo Image Computing"
+  bio              : "Computer Vision"
   location         : "South Korea"
   #email            : "semongsu0223@kaist.ac.kr"
   links:
