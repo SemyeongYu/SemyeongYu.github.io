@@ -1,7 +1,7 @@
 ---
 layout: single
 title: "Semi-supervised Learning"
-categories: Computer_Vision
+categories: CV_Tasks
 tags: [vision, semi-supervised]
 search: true # 오른쪽 위에 검색 기능
 use_math: true # LaTeX 수식 문법
@@ -21,91 +21,50 @@ typora-root-url: ../
 [IN2375 Computer Vision - Detection, Segmentation and Tracking]
 컴퓨터비전 노트 정리
 
-### Unsupervised Learning
+### Semi-supervised Learning
 
-특징 : fast / costly (much computation)
+>  아이디
 
-### Self-supervised learning
+use both labelled and unlabelled data
 
->  Evaluation
+> assumption
 
-fine-tuning / linear probing / k-NN classification
+- smoothness : if two inputs are close, their labels are same
+- low density : decision boundary should pass through region with low density
+- manifold : data come from multiple low-dim. manifolds if data points share same manifold, their labels are same
 
-> Pretext task
+> unsupervised pre-processing
 
-사용자가 직접 정의한 새로운 different task (goal task와 관련 있어야 함)
+feature extraction
 
-> Contrastive Learning
+> wrapper method 중 self-training
 
-아이디어 : 
+OnAVOS는 slow이므로 first frame/new frame 대신 
 
-positive pair (image vs augmented image)와 negative pair (image vs other image) 만들어서 triplet loss 사용 또는 maximize contrastive score (아래 사진 참고)
+offline으로 labelled/unlabelled data 사용
 
-- SimCLR (Simple framework for Contrastive Learning) :
+initial prediction이 중요하므로 미리 train strong baseline on labelled set
 
-&nbsp; &nbsp; two augmented images에 대해 maximize similarity b.w. feature maps
+>  energy minimization (low-density assumption 적용)
 
-&nbsp; &nbsp; 장점 : simple
+minimize $-p(x_i)logp(x_i)$ = entropy of class distribution of each pixel $x_i$
 
-&nbsp; &nbsp; 단점 : negative samples 수가 많을수록 gradient bias가 줄어드므로 
+>  VAN (virtual adversarial network) (smoothness assumption 적용)
 
-&nbsp; &nbsp; &nbsp;  &nbsp;  &nbsp;  &nbsp;  &nbsp; large batchsize가 필요한데 그러면 large computation 필요
+labelled set : true posterior(gt) 와 adversarial 추가한 image의 prediction 비교
 
-- MoCo (Momentum Contrast) :
+unlabelled set : 기존 image의 prediction 과 adversarial 추가한 image의 prediction 비교
 
-1. memory queue를 통해 GPU memory footprint 작아서 large batchsize 가능
-2. dynamic update of momentum encoder로 성능 향상
+> Domain Alignment
 
-> Non-Contrastive Learning
+GAN의 원리 사용하여 unlabelled real data와 labelled synthetic data의 distribution을 비슷하게
 
-other images (negative pair) 쓰지 않음
+> Consistency Regularization
 
-- DINO (self-distillation with no labels) :
+image에 transformation을 가하더라도 robust하게 consistent prediction을 하도록 consistency loss 추가
 
- &nbsp; &nbsp;  &nbsp; ViT 등에서 robust latent embedding 만드는 데 사용
+![img112](/images/2024-03-01-semisupervised-learning/img112.jpg)
 
- &nbsp; &nbsp;  &nbsp; centering : teacher sharpening할 때 collapse되는 것을 방지하기 위해 moving average of center를 빼줌
+![img117](/images/2024-03-01-semisupervised-learning/img117.jpg)
 
- &nbsp; &nbsp;  &nbsp; sharpening : teacher가 student보다 lower temperature로 sharpened
-
-- DINOv2 :
-
- &nbsp; &nbsp;  &nbsp; DINO보다 2배 faster, 3배 less memory  by  noisy student, adaptive resolution, data curation, ...
-
-- MAE (Masked Autoencoders) :
-
- &nbsp; &nbsp;  &nbsp; high masking ratio 필요
-
- &nbsp; &nbsp;  &nbsp; masked patches를 reconstruct한 뒤 이에 대해서만 loss 계산
-
->  multi-view assumption
-
-view(crop) provides enough info. for downstream task
-
->  PAC (pixel-adaptive conv.) layer
-
-conv.를 하기 전에 spatially varying kernel을 곱함
-
-### Downstream Applications
-
->semantic segmentation 에서 KNN correspondence
-
-two image에 대해 "segmentation correspondence"가 "feature(DINO) correspondence"를 모방하도록 학습
-
-> motion-based VOS
-
-network G : image & optical flow -> object mask
-
-network I : masked optical flow & image -> reconstruct optical flow
-
-> Contrastive Random Walk (object tracking)
-
-아래 사진 참고. 
-
-cycle consistency loss (cross-entropy loss b.w. label_t=0 and label_t=T)
-
-![img97](/images/2024-03-01-unsupervised-learning/img97.jpg)
-
-![img102](/images/2024-03-01-unsupervised-learning/img102.jpg)
-
-![img107](/images/2024-03-01-unsupervised-learning/img107.jpg)
+![img122](/images/2024-03-01-semisupervised-learning/img122.jpg)

@@ -1,7 +1,7 @@
 ---
 layout: single
 title: "Image Segmentation"
-categories: Computer_Vision
+categories: CV_Tasks
 tags: [vision, segmentation, semantic, instance, panoptic]
 search: true # 오른쪽 위에 검색 기능
 use_math: true # LaTeX 수식 문법

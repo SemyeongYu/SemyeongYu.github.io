@@ -1,7 +1,7 @@
 ---
 layout: single
 title: "Video Object Segmentation"
-categories: Computer_Vision
+categories: CV_Tasks
 tags: [vision, segmentation, video, motion, appearance]
 search: true # 오른쪽 위에 검색 기능
 use_math: true # LaTeX 수식 문법

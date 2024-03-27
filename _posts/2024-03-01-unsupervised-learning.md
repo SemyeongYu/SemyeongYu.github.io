@@ -1,7 +1,7 @@
 ---
 layout: single
 title: "Unsupervised Learning"
-categories: Computer_Vision
+categories: CV_Tasks
 tags: [vision, unsupervised]
 search: true # 오른쪽 위에 검색 기능
 use_math: true # LaTeX 수식 문법
@@ -109,3 +109,5 @@ cycle consistency loss (cross-entropy loss b.w. label_t=0 and label_t=T)
 ![img102](/images/2024-03-01-unsupervised-learning/img102.jpg)
 
 ![img107](/images/2024-03-01-unsupervised-learning/img107.jpg)
+
+![img112](/images/2024-03-01-unsupervised-learning/img112.jpg)
