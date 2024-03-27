@@ -21,8 +21,6 @@ typora-root-url: ../
 [IN2375 Computer Vision - Detection, Segmentation and Tracking]
 컴퓨터비전 노트 정리
 
-# Object Detection
-
 ### Old Approach
 
 > Template matching with sliding window
@@ -37,7 +35,7 @@ loss : MSE(SSD) / NCC / ZNCC (difference between 'image itself' and template)
 
 > Proposals(RoIs) by selective search or edge box (2-stage) 
 
-+): NMS에서 $b_i$와 비슷한 $b_j$들에 대해 confidence score를 비교하여 $b_i$ 제거 여부를 결정하는데, 만약 IoU_threshold를 넘겨야 비교 후 제거 (N) 가능하다면 high $IoU_{threshold}$ -> less FN, more FP
++): NMS에서 $b_i$와 비슷한 $b_j$들에 대해 confidence score를 비교하여 $b_i$ 제거 여부를 결정하는데, 만약 $IoU_{threshold}$를 넘겨야 비교 후 제거 (N) 가능하다면 high $IoU_{threshold}$ -> less FN, more FP
 
 ### **Detection Evaluation**
 
@@ -89,7 +87,7 @@ R-CNN의 단점 1., 2., 3. 모두 해결
 
 
 
-+): FPN (= Feature Pyramid Network) : 
+> FPN (= Feature Pyramid Network) : 
 
 define RPN on each level of FPN
 
@@ -136,7 +134,7 @@ one-stage detector는 그렇지 않아서 class imbalance 문제 발생
 
 > accuracy : YOLO < SSD < two-stage detector < RetinaNet
 
-+): spatial transformer : 
+> spatial transformer : 
 
 grid generator로 sampling with bilinear interpolation 
 

@@ -21,8 +21,6 @@ typora-root-url: ../
 [IN2375 Computer Vision - Detection, Segmentation and Tracking]
 컴퓨터비전 노트 정리
 
-# Object Tracking
-
 ### General Bayesian Framework
 
 > setting
@@ -45,13 +43,14 @@ temporal prior p($x_k$ $\vert$ $x_{k-1}$)는 $Z_{k-1}$ 또는 $X_{k-2}$ 에 무�
 
 아래 사진에 있는 식과 같이 posteior p($x_k$ $\vert$ $Z_k$)를 recursively 구할 수 있음
 
-+): posterior mean = E($x_k$ $\vert$ $Z_k$)  /  MAP(maximum a posterior) = argmax_$x_k$ (p($x_k$ $\vert$ $Z_k$))
+posterior mean = E($x_k$ $\vert$ $Z_k$)
+
+MAP(maximum a posterior) = argmax_$x_k$ (p($x_k$ $\vert$ $Z_k$))
 
 +): deep learning : learn MAP directly 
 
-​     \- online tracking : computational overhead / drifting에 취약
-
-​     \- offline tracking : real-time (X) / 새로운 frame에 적응 (X)
+- online tracking : computational overhead / drifting에 취약
+- offline tracking : real-time (X) / 새로운 frame에 적응 (X)
 
 
 
@@ -91,9 +90,7 @@ match (Hungarian matching O(N^3))
 
 매 frame마다 아래의 과정 반복
 
-copy boxes to frame k
-
-regression : refine boxes / classification : kill if low conf / detection : find new BB
+copy boxes to frame k -> regression (refine boxes) & classification (kill if low conf) & detection (find new BB)
 
 장점 : object detector 재사용 가능 / still image로 훈련된 object detector여도 괜찮 / regression is agnostic to ID or class
 
@@ -106,7 +103,7 @@ regression : refine boxes / classification : kill if low conf / detection : find
 
 small motion assumption이 필요한 motion model (IoU) 말고 more robust "appearance" model을 만들어보자!
 
-contrastive learning : positive / negative pair 만들어서 siamese network를 통해 hinge 또는 triplet loss
+contrastive learning : positive & negative pair 만들어서 siamese network를 통해 hinge 또는 triplet loss
 
 ### Multiple Object Tracking (offline) : Graph-based
 
@@ -116,34 +113,34 @@ contrastive learning : positive / negative pair 만들어서 siamese network를 
 
 \- Bayesian framework로부터 cost 유도하기 : 아래 사진 참고
 
-   likelihood -> detection cost
+- likelihood -> detection cost
+- prior -> entrance / transition / exit cost
 
-   prior         -> entrance / transition / exit cost
-
-   한계 : Markov formulation은 occlusion 설명 불가능 / not end-to-end
+\- Markov formulation은 occlusion 설명 불가능 / not end-to-end
 
 > Message Passing Network
 
-- initialization : 
+\- initialization :
 
-   node : from BB
+- node : from BB
 
-   edge : from BB coordinates 차이 및 reid_distance 차이
+- edge : from BB coordinates 차이 및 reid distance 차이 
 
-- neural message passing :
+\- neural message passing :
 
-   node-to-edge : 
+- node-to-edge :
 
-($node_i$ at k-1), ($node_j$ at k-1), ($edge_{ij}$ at k-1), ($edge_{ij}$ at 0) -> $edge_{ij}$ at k
+&nbsp;&nbsp; &nbsp;&nbsp; &nbsp; ($node_i$ at k-1), ($node_j$ at k-1), ($edge_{ij}$ at k-1), ($edge_{ij}$ at 0) -> $edge_{ij}$ at k
 
-   edge-to-node : 
+- edge-to-node : 
 
-($edge_{ij}$ at k for every neighbor j), ($node_i$ at k-1) -> $node_i$ at k
+ &nbsp;&nbsp; &nbsp; &nbsp; ($edge_{ij}$ at k for every neighbor j), ($node_i$ at k-1) -> $node_i$ at k
 
-이 때, node-permutation-invariant 이므로 set or sum 사용
+ &nbsp;&nbsp; &nbsp; &nbsp; 이 때, node-permutation-invariant 이므로 set or sum 사용  
 
-- edge classification : 단순히 thresholding 뿐만 아니라 post-processing 필요
-- loss : 
+\- edge classification : 단순히 thresholding 뿐만 아니라 post-processing 필요
+
+\- loss : 
 
 아래 사진에서 w > 1 이면 gt = 1 (active adge)일 때 틀리면 안 된다는 의미이므로 penalize FN
 
@@ -153,7 +150,7 @@ contrastive learning : positive / negative pair 만들어서 siamese network를 
 
 MOTA / F1-score / MOTP
 
-![img47](/images/2024-03-01-object-tracking/img47.jpg)
+![img27](/images/2024-03-01-object-tracking/img27.jpg)
 
 ![img32](/images/2024-03-01-object-tracking/img32.jpg)
 
@@ -161,3 +158,4 @@ MOTA / F1-score / MOTP
 
 ![img42](/images/2024-03-01-object-tracking/img42.jpg)
 
+![img47](/images/2024-03-01-object-tracking/img47.jpg)
